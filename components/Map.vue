@@ -49,9 +49,7 @@ onMounted(async () => {
 
     setMarkers(props.listings)
 
-    if (bounds.value) {
-      map.value.fitBounds(bounds.value)
-    }
+    map.value.fitBounds(bounds.value)
     clusterer.value = new MarkerClusterer({ map: map.value, markers: markers.value })
   }
 })
