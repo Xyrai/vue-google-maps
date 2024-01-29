@@ -60,6 +60,10 @@ const clearMarkers = () => {
   if (clusterer.value) {
     clusterer.value.clearMarkers()
   }
+
+  if (markers.value) {
+    markers.value = []
+  }
 }
 
 const setMarkers = (listings: Listing[]) => {
@@ -83,10 +87,6 @@ const setMarkers = (listings: Listing[]) => {
 
 watch(() => props.markerData, () => {
   clearMarkers()
-
-  if (markers.value) {
-    markers.value = []
-  }
 
   if (props.markerData && map.value) {
     setMarkers(props.markerData)
