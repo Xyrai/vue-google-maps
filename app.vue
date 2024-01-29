@@ -3,7 +3,7 @@
     <button class="p-4 bg-yellow-500 text-black shadow-md z-10 absolute bottom-1 left-1" @click="changeType()">
       Change type
     </button>
-    <Map class="flex-grow" :markerData="listings" />
+    <Map class="flex-grow" :listings="listings" />
   </div>
 </template>
 

@@ -20,7 +20,7 @@ interface Listing {
 }
 
 const props = defineProps<{
-  markerData: Listing[]
+  listings: Listing[]
 }>()
 
 const mapElement = ref<HTMLElement>()
@@ -47,7 +47,7 @@ onMounted(async () => {
     map.value = new Map(mapElement.value, mapOptions)
     bounds.value = new google.maps.LatLngBounds()
 
-    setMarkers(props.markerData)
+    setMarkers(props.listings)
 
     if (bounds.value) {
       map.value.fitBounds(bounds.value)
@@ -85,11 +85,11 @@ const setMarkers = (listings: Listing[]) => {
   }
 }
 
-watch(() => props.markerData, () => {
+watch(() => props.listings, () => {
   clearMarkers()
 
-  if (props.markerData && map.value) {
-    setMarkers(props.markerData)
+  if (props.listings && map.value) {
+    setMarkers(props.listings)
 
     if (clusterer.value) {
       clusterer.value.addMarkers(markers.value)
