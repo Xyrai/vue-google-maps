@@ -12,6 +12,7 @@ import { Loader } from '@googlemaps/js-api-loader'
 import { MarkerClusterer } from "@googlemaps/markerclusterer"
 
 interface Listing {
+  name: string
   price: number
   coordinates: {
     lat: number
@@ -73,10 +74,14 @@ const setMarkers = (listings: Listing[]) => {
       position: latLng,
     })
 
+    // Set custom marker values
+    marker.set('name', listing.name)
+    marker.set('price', listing.price)
+
     bounds.value?.extend(latLng)
 
     marker.addListener("click", () => {
-      console.log("You clicked me! 😎")
+      console.log(`Marker Name: ${marker.get('name')}\nMarker Price: ${marker.get('price')}`)
     })
 
     markers.value.push(marker)
